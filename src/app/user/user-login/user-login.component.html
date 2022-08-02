@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formulario" (ngSubmit)="submitForm()" novalidate>
+        <div class="form-group row">
+          <label for="email" style="color:#800070">Email</label>
+          <input type="email" class="form-control" placeholder="Email" formControlName="email" />
+          <div class="col-sm-4">
+            <small class="text-danger" *ngIf="errorHandling('email','required')">
+              El email es requerido
+            </small>
+            <small class="text-danger" *ngIf="errorHandling('email','email')">
+              Verifique el formato del email
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group row">
+          <label for="password" style="color:#800070">Password</label>
+          <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+          <div class="col-sm-4">
+            <small class="text-danger" *ngIf="errorHandling('password','required')">
+              El password es requerido
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-info">Login</button>
+          <button type="reset" class="btn btn-danger" (click)="onReset()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

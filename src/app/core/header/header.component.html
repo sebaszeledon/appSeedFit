@@ -1,0 +1,88 @@
+<div class="site-header sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-image: linear-gradient(10deg, #5ab2ff 0, #75afff 6.25%, #8baaff 12.5%, #9fa6ff 18.75%, #b1a1fd 25%, #c19df7 31.25%, #cf98ef 37.5%, #dc94e6 43.75%, #e790dc 50%, #f08dd1 56.25%, #f88ac6 62.5%, #fd88ba 68.75%, #ff87af 75%, #ff87a3 81.25%, #ff8897 87.5%, #ff898c 93.75%, #ff8c81 100%);">
+  <div class="container-fluid" >
+    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+      style="padding-left: 1%">
+      <img class="bi me-2" width="170" height="80" role="img" aria-label="Bootstrap" src="/assets/img/nombre.ico">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+      aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Productos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+            style="background-image: linear-gradient(100deg, #ffa9d5 0, #ffa1d7 16.67%, #f598d9 33.33%, #e790dc 50%, #d789df 66.67%, #c583e3 83.33%, #b080e7 100%)">
+            <li><a class="dropdown-item" style="color:#800070" routerLink="/producto" routerLinkActive="active">Catálogo</a></li>
+            <li><a class="dropdown-item" style="color:#800070" routerLink="/producto/all" routerLinkActive="active" href="#">Mantenimiento</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Transacciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-image: linear-gradient(100deg, #ffa9d5 0, #ffa1d7 16.67%, #f598d9 33.33%, #e790dc 50%, #d789df 66.67%, #c583e3 83.33%, #b080e7 100%)">
+            <li><a class="dropdown-item" style="color:#800070" href="#">Entrada</a></li>
+            <li><a class="dropdown-item" style="color:#800070" href="#">Salida</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" style="color:#800070" routerLink="/transaccion" routerLinkActive="active">Reporte</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Proveedores
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+          style="background-image: linear-gradient(100deg, #ffa9d5 0, #ffa1d7 16.67%, #f598d9 33.33%, #e790dc 50%, #d789df 66.67%, #c583e3 83.33%, #b080e7 100%)">
+          <li><a class="dropdown-item" style="color:#800070" routerLink="/proveedor" routerLinkActive="active">Mantenimiento</a></li>
+          <li><a class="dropdown-item" style="color:#800070" routerLink="/agente" routerLinkActive="active"
+              href="#">Agentes</a></li>
+        </ul>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/orden" routerLinkActive="active" class="nav-link"><i
+              class="fas fa-shopping-cart"></i> <span class="badge badge-light">{{qtyItems}}</span> </a>
+        </li>
+      </ul>
+      <div class="dropdown text-end" style="padding-right: 10%;">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false" style="color:#800070" *ngIf="isAutenticated">
+          <img src="/assets/img/logo.ico" alt="mdo" width="32" height="32" class="rounded-circle">
+          {{currentUser.user.name}}
+        </a>
+        <a [routerLink]="['usuario/login']" *ngIf="!(isAutenticated)" class="d-block link-dark text-decoration-none" style="color:#800070">
+          Login
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="background-image: linear-gradient(10deg, #5ab2ff 0, #75afff 6.25%, #8baaff 12.5%, #9fa6ff 18.75%, #b1a1fd 25%, #c19df7 31.25%, #cf98ef 37.5%, #dc94e6 43.75%, #e790dc 50%, #f08dd1 56.25%, #f88ac6 62.5%, #fd88ba 68.75%, #ff87af 75%, #ff87a3 81.25%, #ff8897 87.5%, #ff898c 93.75%, #ff8c81 100%);" *ngIf="isAutenticated">
+          <li>
+            <a *ngIf="isAutenticated" class="dropdown-item" style="color:#800070" disabled ='true'>
+              {{currentUser.user.email}}</a>
+          </li>
+          <li>
+            <a [routerLink]="['usuario/registrar']" *ngIf="(isAutenticated)" class="dropdown-item"
+              style="color:#800070">
+              Registrar
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li>
+            <a (click)="logout()" *ngIf="isAutenticated" class="dropdown-item" style="color:#800070">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+</div>

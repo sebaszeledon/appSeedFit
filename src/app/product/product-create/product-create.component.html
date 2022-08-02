@@ -1,0 +1,179 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <br>
+    <strong class="text-primary" style="padding-top: 2%; padding-bottom: 2%;">Crear Producto</strong>
+    <br><br>
+    <hr><br><br>
+
+    <div class="container margen">
+      <form [formGroup]="formCreate" (ngSubmit)="submitForm()" novalidate>
+        <div class="row justify-content-center margen">
+          <!--Formulario información-->
+          <div class="col-md-6">
+            <div class="form-group row">
+
+              <label class="col-sm-4 col-form-label" for="name">Nombre </label>
+              <div class="col-sm-8">
+                <input type="text" class="formControl" formControlName="name" name="name"
+                  placeholder="Nombre" />
+              </div>
+              <div class="col-auto">
+                <small *ngIf="errorHandling('name', 'required')" class="text-danger">
+                  El nombre del producto es requerido
+                </small>
+              </div>
+
+            </div>
+            <div class="form-group row">
+
+              <label class="col-sm-4 col-form-label" for="code">Código </label>
+              <div class="col-sm-8">
+                <input type="text" class="formControl" formControlName="code" name="code" placeholder="Código"/>
+              </div>
+
+              <div class="col-auto">
+                <small *ngIf="errorHandling('code', 'required')" class="text-danger">
+                  El código del producto es requerido
+                </small>
+              </div>
+
+            </div>
+            <div class="form-group row">
+
+              <label class="col-sm-4 col-form-label" for="cost">Costo </label>
+              <div class="col-sm-8">
+                <input type="text" class="formControl" formControlName="cost" name="cost" placeholder="Costo"/>
+              </div>
+
+              <div class="col-auto">
+                <small *ngIf="errorHandling('cost', 'required')" class="text-danger">
+                  El costo del producto es requerido
+                </small>
+                <small *ngIf="errorHandling('cost', 'pattern')" class="text-danger">
+                  El costo debe contener solo números
+                </small>
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <label for="price" class="col-sm-4 col-form-label">Precio</label>
+              <div class="col-sm-8">
+                <input type="text" class="formControl" name="price" formControlName="price" placeholder="Precio"/>
+              </div>
+              <div class="col-auto">
+                <small *ngIf="errorHandling('price', 'required')" class="text-danger">
+                  El precio del producto es requerido
+                </small>
+                <small *ngIf="errorHandling('price', 'pattern')" class="text-danger">
+                  El precio debe contener solo números
+                </small>
+              </div>
+              <br><hr><br>
+
+            </div>
+            <div class="form-group row">
+              <label for="categories" class="col-sm-4 col-form-label">Categorías </label>
+              <div class="col-sm-8">
+                <!--Array control genero-->
+                <div formArrayName="categories">
+                  <!--Nombre del control con el indice y valor obtenido de la lista de generos-->
+                  <!--Cada vez que cambia o se selecciona, debe actualizar el array que guarda los id de genero-->
+                  <div class="form-check" *ngFor="let p of categories.controls; index as i">
+                    <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="categoriesList[i]?.id"
+                      (change)="onCheckChange(categoriesList[i]?.id, $event)" />
+                    <label class="form-check-label">{{
+                      categoriesList[i]?.description
+                      }}</label>
+                  </div>
+                </div><br>
+              </div>
+              <hr><br>
+            </div>
+            <div class="form-group row">
+              <label for="providers" class="col-sm-4 col-form-label">Proveedores </label>
+              <div class="col-sm-8">
+                <!--Array control proveedor-->
+                <div formArrayName="providers">
+                  <!--Nombre del control con el indice y valor obtenido de la lista de proveedores-->
+                  <!--Cada vez que cambia o se selecciona, debe actualizar el array que guarda los id de proveedores-->
+                  <div class="form-check" *ngFor="let p of providers.controls; index as i">
+                    <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="providersList[i]?.id"
+                      (change)="onCheckChangeProviders(providersList[i]?.id, $event)" />
+                    <label class="form-check-label">{{
+                      providersList[i]?.description
+                      }}</label>
+                  </div>
+                </div><br>
+              </div>
+              <hr><br>
+            </div>
+            <div class="form-group row">
+              <label for="sizes" class="col-sm-4 col-form-label">Tallas </label>
+              <div class="col-sm-8">
+                <!--Array control talla-->
+                <div formArrayName="sizes">
+                  <!--Nombre del control con el indice y valor obtenido de la lista de tallas-->
+                  <!--Cada vez que cambia o se selecciona, debe actualizar el array que guarda los id de tallas-->
+                  <div class="form-check" *ngFor="let p of sizes.controls; index as i">
+                    <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="sizesList[i]?.id"
+                      (change)="onCheckChangeSizes(sizesList[i]?.id, $event)" />
+                    <label class="form-check-label">{{
+                      sizesList[i]?.description
+                      }}</label>
+                  </div>
+                </div><br>
+              </div>
+              <hr><br>
+            </div>
+            <div class="form-group row">
+              <label for="storages" class="col-sm-4 col-form-label">Ubicaciones </label>
+              <div class="col-sm-8">
+                <!--Array control talla-->
+                <div formArrayName="storages">
+                  <!--Nombre del control con el indice y valor obtenido de la lista de ubicaciones-->
+                  <!--Cada vez que cambia o se selecciona, debe actualizar el array que guarda los id de ubicaciones-->
+                  <div class="form-check" *ngFor="let p of storages.controls; index as i">
+                    <input type="checkbox" class="form-check-input" [formControlName]="i" [value]="storagesList[i]?.id"
+                      (change)="onCheckChangeStorages(storagesList[i]?.id, $event)" />
+                    <label class="form-check-label">{{
+                      storagesList[i]?.description
+                      }}</label>
+                  </div>
+                </div><br>
+              </div>
+              <hr><br>
+            </div>
+          </div>
+          <!--Imagen-->
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label for="image" class="col-sm-4 col-form-label">Imagen </label>
+              <div class="col-sm-8">
+                <input type="file" class="formControl" name="image" (change)="onFileSelect($event)" />
+              </div>
+              <!--Mostrar imagen seleccionada-->
+              <div *ngIf="imageURL && imageURL !== ''" class="card" style="width: 18rem;">
+                <img [src]="imageURL" alt="Imagen Producto" class="img-fluid card-img-top">
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <div >
+            <div class="btn-group" role="group">
+              <button type="submit" class="btn btn-success">Guardar</button>
+              <button type="reset" class="btn btn-danger" (click)="onReset()">
+                Cancelar
+              </button>
+              <button type="button" class="btn btn-info" (click)="onBack()">
+                Regresar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <br><br>
+    </div>
+
+  </div>
+</main>

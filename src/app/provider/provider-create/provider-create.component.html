@@ -1,0 +1,65 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <br>
+    <strong class="text-primary" style="padding-top: 2%; padding-bottom: 2%;">Agregar Proveedor</strong>
+    <br><br>
+    <hr><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <form [formGroup]="formCreate" (ngSubmit)="submitForm()" novalidate>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción" formControlName="description" />
+              <div class="col-auto">
+                <small *ngIf="errorHandling('description', 'required')" class="text-danger">
+                  La descripción del proveedor es requerida
+                </small>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Website" formControlName="website" />
+              <div class="col-auto">
+                <small *ngIf="errorHandling('website', 'required')" class="text-danger">
+                  El nombre del website es requerido
+                </small>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="País" formControlName="country" />
+              <div class="col-auto">
+                <small *ngIf="errorHandling('country', 'required')" class="text-danger">
+                  El país es requerido
+                </small>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Dirección" formControlName="address" />
+              <div class="col-auto">
+                <small *ngIf="errorHandling('address', 'required')" class="text-danger">
+                  La dirección es requerida
+                </small>
+              </div>
+            </div>
+            <br><br>
+            <div class="btn-group" role="group">
+              <button type="submit" class="btn btn-success">Registrar</button>
+              <button type="reset" (click)="onReset()" class="btn btn-danger">
+                Cancelar
+              </button>
+              <button type="button" class="btn btn-info" (click)="onBack()">
+                Regresar
+              </button>
+            </div>
+          </form>
+          <br><br>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

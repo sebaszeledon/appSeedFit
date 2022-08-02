@@ -1,0 +1,59 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <div class="container margen">
+      <div class="row my-4">
+        <div class="col" *ngIf="datos?.id">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+            <div class="col p-4 d-flex flex-column position-static">
+
+              <h3 class="mb-0 text-primary" style="padding-top: 1%;">{{ datos.type.description }}</h3>
+              <br>
+              <div>
+                <b>Fecha:
+                </b> {{ datos.date | date: "dd-MM-yyyy" }}
+              </div>
+              <div>
+                <b>Usuario:
+                </b> {{ datos.user.name }} | {{datos.user.email}}
+              </div>
+              <div>
+                <b>Descripción:
+                </b> {{ datos.description }}
+              </div>
+              <hr>
+              <div class="card-text">
+                <table class="table table-hover" style="color: rgb(147, 0, 160);">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Costo</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of datos.products">
+                      <td>{{item.name}}</td>
+                      <td>₡{{item.cost}}</td>
+                      <td>₡{{item.price}}</td>
+                      <td>{{item.pivot.quantity}}</td>
+                      <td>₡{{item.pivot.subtotal}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <hr>
+              <h4>Cantidad de productos: {{ datos.total_quantity }}</h4>
+              <h4>Total: {{ datos.total_amount | currency:'₡'}}</h4>
+              <hr>
+              <h4>Observación: {{ datos.observation }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

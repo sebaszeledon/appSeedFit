@@ -1,0 +1,64 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <div class="container margen">
+      <div class="row my-4">
+        <div class="col" *ngIf="datos?.id">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+            <div class="col p-4 d-flex flex-column position-static">
+
+              <h3 class="mb-0 text-primary" style="padding-top: 1%;">{{ datos.description }}</h3>
+              <div class="mb-1 text-muted">
+                <b>Website:
+                </b> {{ datos.website }}
+              </div>
+              <hr>
+              <div class="card-text" style="width: 70%;">
+                <b>Agentes: </b><br><br>
+                <table class="table table-hover" style="color: rgb(147, 0, 160);">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Teléfono</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of datos.agents">
+                      <td>{{item.name}} {{item.lastname}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.phone}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <hr>
+              <div class="card-text" style="width: 30%;">
+                <b>Productos asociados: </b><br><br>
+                <table class="table table-hover" style="color: rgb(147, 0, 160);">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Código</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of datos.products">
+                      <td>{{item.name}}</td>
+                      <td>{{item.code}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <hr>
+              <h4>País: {{ datos.country }}</h4>
+              <h4>Dirección: {{ datos.address }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+

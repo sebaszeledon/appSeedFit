@@ -1,0 +1,44 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <br>
+    <strong class="text-primary" style="padding-top: 2%; padding-bottom: 2%;">Lista de productos</strong>
+    <br><br>
+    <hr>
+
+    <div class="row justify-content-center margen">
+      <div class="col-md-10">
+        <button type="button" class="btn btn-info btn-sm"
+        [routerLink]="['/producto/create']" routerLinkActive="active"
+         style="width: 70px; height: 70px; color: white;">
+          <i class="fas fa-plus"></i>
+        </button>
+        <br><br>
+        <table class="table table-hover" style="color: blueviolet;">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datos">
+              <td>{{item.name}}</td>
+              <td>{{item.cost | currency:'₡'}}</td>
+              <td>{{item.price | currency:'₡'}}</td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm"
+                [routerLink]="['/producto/update/',item.id]" routerLinkActive="active">
+                  <i class="fas fa-pencil-alt" style="color: white;"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>

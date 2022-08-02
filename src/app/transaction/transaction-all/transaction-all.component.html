@@ -1,0 +1,40 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <br>
+    <strong class="text-primary" style="padding-top: 2%; padding-bottom: 2%;">Lista de transacciones</strong>
+    <br><br>
+    <hr>
+
+    <div class="row justify-content-center margen">
+      <div class="col-md-10">
+        <table class="table table-hover" style="color: blueviolet;">
+          <thead>
+            <tr>
+              <th scope="col">Tipo</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Cantidad Total</th>
+              <th scope="col">Total</th>
+              <th scope="col">Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datos">
+              <td>{{item.type.description}}</td>
+              <td>{{item.date | date: "dd-MM-yyyy"}}</td>
+              <td>{{item.total_quantity}}</td>
+              <td>{{item.total_amount | currency:'₡'}}</td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm" [routerLink]="['/transaccion/',item.id]"
+                  routerLinkActive="active">
+                  <i class="fas fa-eye" style="color: white;"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>

@@ -1,0 +1,29 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+    <br>
+    <strong class="text-primary" style="padding-top: 2%; padding-bottom: 2%; ">Catálogo de productos</strong>
+    <br><br>
+    <hr>
+
+    <div class="container-fluid" margen style="padding-left: 3%;" >
+      <div class="row my-3">
+        <div class="col-md-3 my-3" *ngFor="let item of datos">
+          <!-- Información de productos -->
+          <div class="card border-info mb-3" >
+            <img src="{{item.image}}" alt="Imagen" class="img-thumbnail" />
+            <div class="card-body">
+              <h4 class="mb-1 text-muted">{{item.code}}</h4>
+              <h4 class="card-title">{{item.name}}</h4>
+              <h3 class="mb-1 text-muted">Costo: {{item.cost | currency:'₡'}}</h3>
+              <h3 class="card-text">Precio: {{item.price | currency:'₡'}}</h3>
+              <a class="btn btn-info" [routerLink]="['/producto/',item.id]" routerLinkActive="active">Ver más <i
+                  class="fas fa-angle-double-right"></i></a><br><br>
+                  <button class="btn btn-warning" (click)="agregarProducto(item.id)"><i class="fas fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

@@ -1,0 +1,60 @@
+<main class="container" style="padding-top: 2%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <div class="container margen">
+      <div class="row my-4">
+        <div class="col" *ngIf="datos?.id">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-6 shadow-sm h-md-250 ">
+            <div class="col p-4 d-flex flex-column position-static"><img src="{{ datos.image }}"
+                alt="Imagen" class="img-thumbnail rounded float-left" /></div>
+            <div class="col p-4 d-flex flex-column position-static">
+
+              <h3 class="mb-0 text-primary" style="padding-top: 10%;">{{ datos.name }}</h3>
+              <div class="mb-1 text-muted">
+                <b>Código:
+                </b> {{ datos.code }}
+              </div>
+              <hr>
+              <div class="card-text">
+                <b>Categoría: </b>
+                <ul>
+                  <li class="mb-0 text-primary" *ngFor="let item of datos.categories">
+                    {{item.description}}
+                  </li>
+                </ul>
+              </div>
+              <div class="card-text">
+                <b>Tallas: </b>
+                <ul>
+                  <li class="mb-0 text-primary" *ngFor="let item of datos.sizes">
+                    {{item.description}}
+                  </li>
+                </ul>
+              </div>
+              <div class="card-text">
+                <b>Ubicación: </b>
+                <ul>
+                  <li class="mb-0 text-primary" *ngFor="let item of datos.storages">
+                    {{item.description}}
+                  </li>
+                </ul>
+              </div>
+              <div class="card-text">
+                <b>Proveedor: </b>
+                <ul>
+                  <li class="mb-0 text-primary" *ngFor="let item of datos.providers">
+                    {{item.description}} | {{item.website}}
+                  </li>
+                </ul>
+              </div>
+              <hr>
+              <h4>Costo: {{ datos.cost | currency:'₡' }}</h4>
+              <h4>Precio: {{ datos.price | currency:'₡' }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

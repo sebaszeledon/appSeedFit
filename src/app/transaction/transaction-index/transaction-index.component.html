@@ -1,0 +1,120 @@
+<main class="container" style="padding-top: 3%; padding-bottom: 3%;">
+  <div class="row" style="padding-bottom: 2%;">
+
+    <div class="container" style="color:#800070">
+      <div class="row card">
+        <div class="card-header">Transacción</div>
+        <div class="card-body">
+          <div class="col">
+            <p class="card-text">Fecha: {{fecha | date:'dd/MM/yyyy'}}</p>
+          </div><br>
+          <div class="col">
+            <p class="card-text">Registra: {{currentUser.user.name}} {{currentUser.user.lastname}} | {{currentUser.user.email}}</p>
+          </div>
+          <br>
+          <div class="input-group mb-2">
+            <p class="card-text">
+              <label for="types" style="color:#800070">Tipo de Transacción:</label><br>
+              <select class="form-control" id="type_id" style="color:#ee29ac" [(ngModel)]="tipo">
+                <option *ngFor="let type of tipos" [value]="type.id">
+                  {{type.description}}
+                </option>
+              </select>
+            </p>
+          </div>
+          <div class="input-group mb-2">
+            <p class="card-text">Descripción: <input class="form-control" style="color:#ee29ac"
+              id="desc" type="text" [(ngModel)]="desc"></p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class=" row card">
+        <div class="card-header">Detalle Transacción</div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover" style="color:#800070">
+            <thead>
+              <tr>
+                <th>
+                  Producto
+                </th>
+                <th class="right">
+                  Precio
+                </th>
+                <th class="center">
+                  Cantidad
+                </th>
+                <th class="right">
+                  SubTotal
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+
+              <tr class="group" style="cursor: pointer" *ngFor="let item of items; let i = index">
+                <td>
+                  <p>{{ item.product.name}}</p>
+
+
+                </td>
+                <td class="right">
+                  <p>₡{{item.precio}}</p>
+                </td>
+                <td class="center">
+                  <input id="cantidad" style="color:#800070" type="number" class="form-control mb-2" [(ngModel)]="item.cantidad"
+                    (change)="actualizarCantidad(item)">
+                </td>
+
+                <td class="right">
+                  <p>₡{{item.subtotal}}</p>
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-danger btn-sm" (click)="eliminarItem(item)"><i
+                      class="far fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row clearfix d-flex justify-content-end">
+            <div class="col-md-4">
+              <table class="table table-bordered table-hover" style="color:#800070">
+                <tbody>
+                  <tr>
+                    <td class="left">
+                      <strong>Total:</strong>
+                    </td>
+                    <td class="right">
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">₡</div>
+                        </div>
+                        <input readonly class="form-control" id="total" type="text" [value]="total">
+                        <input type="hidden" class="form-control" id="qtyItems" [value]="qtyItems" />
+                      </div>
+                    </td>
+                  </tr><br>
+                  <tr>
+                    <td class="left">
+                      <strong>Observación:</strong>
+                    </td>
+                    <td class="right">
+                      <div class="input-group mb-2">
+                        <input class="form-control" style="color:#ee29ac" id="obs" type="text" [(ngModel)]="obs">
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="col" style="text-align: right;">
+                <button class="btn btn-info mb-2 float-right" style="height: 100px; width: 150px;" (click)="ordenar()">Ordenar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

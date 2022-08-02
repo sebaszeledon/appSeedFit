@@ -1,0 +1,23 @@
+
+<div class="container" style="width: max-width; padding-bottom: 8%;">
+  <div class="row align-items-center my-5"></div>
+  <div class="row align-items-center my-5">
+    <div class="col-sm-6">
+      <ul class="nav nav-tabs nav-pills">
+        <li class="nav-item" >
+          <a class="nav-link" [routerLink]="['/usuario/login']" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/usuario/registrar']" routerLinkActive="active">Registrarse</a>
+        </li>
+      </ul>
+      <br>
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="col-sm-2" style="padding-left: 3%;">
+      <br>
+      <img class="bi me-2" width="170" height="170" role="img" aria-label="Bootstrap" src="/assets/img/inicio.png">
+    </div>
+  </div>
+</div>

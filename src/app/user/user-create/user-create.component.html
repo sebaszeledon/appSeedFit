@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formCreate" (ngSubmit)="submitForm()" novalidate>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Nombre usuario" formControlName="name" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('name', 'required')" class="text-danger">
+              El nombre de usuario es requerido
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="email" formControlName="email" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('email', 'required')" class="text-danger">
+              El email es requerido
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('password', 'required')" class="text-danger">
+              El password es requerido
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="roles" style="color:#800070">Seleccione el rol</label>
+          <select class="form-control" formControlName="role_id" style="color:#800070">
+            <option *ngFor="let role of roles" [value]="role.id">
+              {{role.description}}
+            </option>
+          </select>
+          <div class="col-sm-4">
+            <small *ngIf="errorHandling('role_id', 'required')" class="text-danger">
+              El rol es requerido
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-info">Registrar</button>
+          <button type="reset" (click)="onReset()" class="btn btn-danger">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
